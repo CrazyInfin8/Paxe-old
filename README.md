@@ -5,3 +5,6 @@ I loved how processing was easy and simple to use and taught me a lot. I also lo
 
 #### [haxe](https://haxe.org/)
 #### [Processing](https://processing.org/) and [p5.js](https://p5js.org/)
+
+
+*this library has not been formatted to be used with `haxelib` and has no documentations or instructions as yet… I just wanted to put this out on github for now so others can view, suggest, contribute, or try it out! This isn't really ready for beginners as yet (but I sure hope the end result is easy enough for them).*
