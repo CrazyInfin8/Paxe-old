@@ -32,7 +32,6 @@ class P2D implements PRenderer {
 		strokeColor = PColor.createFromHex(0);
 		strokeWeight = 1;
 		g = renderer.graphics;
-		trace('${Math.round(width)}:${Math.round(height)}');
 		b = new BitmapData(Math.round(width), Math.round(height), true, 0x00FFFFFF);
 		g.beginFill(fillColor.getColorValue(), fillColor.getAlpha());
 		g.lineStyle(strokeWeight, strokeColor.getColorValue(), strokeColor.getAlpha());
@@ -102,7 +101,6 @@ class P2D implements PRenderer {
 	public function fill(c:PColor):Void {
 		fillColor = c;
 		g.beginFill(fillColor.getColorValue(), fillColor.getAlpha());
-		trace('${fillColor.getColorValue()}:${fillColor.getAlpha()}');
 	};
 
 	public function stroke(c:PColor):Void {
