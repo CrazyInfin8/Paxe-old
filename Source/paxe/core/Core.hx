@@ -40,7 +40,7 @@ class Core {
 		});
 	}
 
-	private static final core:Core = new Core();
+	private static var core:Core = new Core();
 
 	public static function getAnlgeMode():AngleMode {
 		return core.angleMode;

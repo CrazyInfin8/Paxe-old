@@ -9,7 +9,8 @@ import paxe.color.PColor;
 import paxe.core.Core;
 import paxe.core.Core.EllipseMode;
 import paxe.core.Core.RectMode;
-import paxe.core.Core.AngleMode;
+// import paxe.core.Core.AngleMode;
+
 class P2D implements PRenderer {
 	public var width:Float = 600;
 	public var height:Float = 500;
@@ -32,7 +33,6 @@ class P2D implements PRenderer {
 		strokeColor = PColor.createFromHex(0);
 		strokeWeight = 1;
 		g = renderer.graphics;
-		trace('${Math.round(width)}:${Math.round(height)}');
 		b = new BitmapData(Math.round(width), Math.round(height), true, 0x00FFFFFF);
 		g.beginFill(fillColor.getColorValue(), fillColor.getAlpha());
 		g.lineStyle(strokeWeight, strokeColor.getColorValue(), strokeColor.getAlpha());
@@ -102,7 +102,6 @@ class P2D implements PRenderer {
 	public function fill(c:PColor):Void {
 		fillColor = c;
 		g.beginFill(fillColor.getColorValue(), fillColor.getAlpha());
-		trace('${fillColor.getColorValue()}:${fillColor.getAlpha()}');
 	};
 
 	public function stroke(c:PColor):Void {
