@@ -56,7 +56,12 @@ class Paxe {
 	public var displayHeight:Int;
 	public var mouseX:Float;
 	public var mouseY:Float;
+	public var deltaTime:Float;
+	@:noCompletion private var _prevTime:Int = 0;
 	function __update(e:Event):Void {
+		var curTime:Int = Lib.getTimer();
+		deltaTime = (curTime - _prevTime) / 1000;
+		_prevTime = curTime;
 		width = display.width;
 		height = display.height;
 		mouseX = parent.mouseX;
@@ -71,6 +76,10 @@ class Paxe {
 		// displayHeight = surface.window.display.bounds.height;
 		// #end
 		redraw();
+	}
+
+	public function millis():Float {
+		return Lib.getTimer();
 	}
 
 	public function redraw(numOfRedraws:UInt = 1):Void {
