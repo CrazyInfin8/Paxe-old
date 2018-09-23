@@ -12,7 +12,7 @@ class Paxe {
 	public var surface:PSurface;
 	public var display:PRenderer;
 	public var parent:Sprite;
-	final noiseGenerator:PNoise = new PNoise();
+	var noiseGenerator:PNoise = new PNoise();
 
 	public function new(s:Sprite, ?win:Window):Void {
 		// parent.width = flash.
@@ -131,15 +131,28 @@ class Paxe {
 		parent.addEventListener(Event.ENTER_FRAME, __update);
 	}
 
-	public function fill(col:PColor):Void {
+	public function fill(?col:PColor, op1:Float = 0, ?op2:Float, ?op3:Float, ?op4:Float):Void {
+		if (col == null) {
+			col = new PColor(op1, op2, op3, op4);
+		}
 		display.fill(col);
 	}
 
-	public function stroke(col:PColor):Void {
+	public function stroke(?col:PColor, op1:Float = 0, ?op2:Float, ?op3:Float, ?op4:Float):Void {
+		if (col == null) {
+			col = new PColor(op1, op2, op3, op4);
+		}
 		display.stroke(col);
 	}
 
 	public function clear():Void {
 		display.clear();
+	}
+	
+	public function background(?col:PColor, op1:Float = 0, ?op2:Float, ?op3:Float, ?op4:Float):Void {
+		if (col == null) {
+			col = new PColor(op1, op2, op3, op4);
+		}
+		display.background(col);
 	}
 }

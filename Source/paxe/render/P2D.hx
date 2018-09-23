@@ -9,7 +9,8 @@ import paxe.color.PColor;
 import paxe.core.Core;
 import paxe.core.Core.EllipseMode;
 import paxe.core.Core.RectMode;
-import paxe.core.Core.AngleMode;
+// import paxe.core.Core.AngleMode;
+
 class P2D implements PRenderer {
 	public var width:Float = 600;
 	public var height:Float = 500;
