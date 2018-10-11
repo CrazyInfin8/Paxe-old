@@ -9,7 +9,7 @@ class Core {
 	private function new() {
 		angleMode = AngleMode.RADIANS;
 		rectMode = RectMode.CORNER;
-		ellipseMode = EllipseMode.RADIUS;
+		ellipseMode = EllipseMode.CENTER;
 		colorMode = ColorMode.RGB;
 		colorBounds = new StringMap<ColorBounds>();
 
