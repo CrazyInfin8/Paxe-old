@@ -39,15 +39,18 @@ class P2D implements PRenderer {
 	}
 
 	public function ellipse(x:Float, y:Float, a:Float, b:Float):Void {
+		if (b == null) b = a;
 		switch (Core.getEllipseMode()) {
 			case EllipseMode.CENTER:
-				g.drawEllipse(x, y, a, b);
+				g.drawEllipse(x - (a / 2), y - (b / 2), Math.abs(a), Math.abs(b));
 			case EllipseMode.RADIUS:
-				g.drawEllipse(x, y, a, b);
+				g.drawEllipse(x - a, y - b, Math.abs(a) * 2, Math.abs(b) * 2);
 			case EllipseMode.CORNER:
 				g.drawEllipse(x, y, a, b);
 			case EllipseMode.CORNERS:
-				g.drawEllipse(x, y, a, b);
+				var tx:Array<Float> = (x - a < 0 ? [x, a - x] : [a, x - a]);
+				var ty:Array<Float> = (y - b < 0 ? [y, b - y] : [b, y - b]);
+				g.drawEllipse(tx[0], ty[0], tx[1], ty[1]);
 		}
 	};
 
@@ -59,21 +62,22 @@ class P2D implements PRenderer {
 	public function rect(x:Float, y:Float, a:Float, b:Float):Void {
 		switch (Core.getRectMode()) {
 			case RectMode.CENTER:
-				g.drawRect(x, y, a, b);
+				g.drawRect(x - (a/2), y - (a/2), a, b);
 			case RectMode.RADIUS:
-				g.drawRect(x, y, a, b);
+				g.drawRect(x - a, y - b, a * 2, b * 2);
 			case RectMode.CORNER:
 				g.drawRect(x, y, a, b);
 			case RectMode.CORNERS:
-				g.drawRect(x, y, a, b);
+				g.drawRect(x, y, a - x, b - y);
 		}
 	};
 
 	public function rrect(x:Float, y:Float, a:Float, b:Float, tl:Float, tr:Float, br:Float, bl:Float):Void {
 		switch (Core.getRectMode()) {
 			case CENTER:
-				g.drawRoundRectComplex(x, y, a, b, tl, tr, br, bl);
+				g.drawRoundRectComplex(x - (a/2), y - (a/2), a, b, tl, tr, br, bl);
 			case RADIUS:
+				g.drawRoundRectComplex(x - a, y - b, a * 2, b * 2, tl, tr, br, bl);
 			case CORNER:
 			case CORNERS:
 		}
