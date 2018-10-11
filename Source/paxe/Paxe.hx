@@ -7,6 +7,8 @@ import paxe.render.*;
 import paxe.color.PColor;
 import openfl.display.FPS;
 import openfl.Lib;
+import paxe.core.Core;
+import paxe.core.Core.EllipseMode;
 import paxe.math.PNoise;
 class Paxe {
 	public var surface:PSurface;
@@ -91,11 +93,8 @@ class Paxe {
 	}
 
 	public function ellipse(x:Float, y:Float, w:Float, ?h:Float):Void {
-		if(h == null) {
-			display.ellipse(x, y, w, w);
-		} else {
-			display.ellipse(x, y, w, h);
-		}
+		if (h == null) h = w;
+		display.ellipse(x, y, w, h);
 	}
 
 	function noise(x:Float, y:Float = 0, z:Float = 0):Float {
@@ -109,10 +108,10 @@ class Paxe {
 	public function rect(x:Float, y:Float, w:Float, h:Float, ?a:Float, ?b:Float, ?c:Float, ?d:Float):Void {
 		if(a == null) {
 			display.rect(x, y, w, h);
-		} else if (b == null) {
-			display.rrect(x, y, w, h, a, a, a, a);
-		} else {
+		} else if (d != null) {
 			display.rrect(x, y, w, h, a, b, c, d);
+		} else {
+			display.rrect(x, y, w, h, a, a, a, a);
 		}
 	}
 
@@ -163,5 +162,23 @@ class Paxe {
 			col = new PColor(op1, op2, op3, op4);
 		}
 		display.background(col);
+	}
+	
+	public function ellipseMode(?mode:EllipseMode):EllipseMode {
+		if (mode != null) {
+			Core.setEllipseMode(mode);
+		}
+		return Core.getEllipseMode();
+	}
+	
+	public function rectMode(?mode:RectMode):RectMode {
+		if (mode != null) {
+			Core.setRectMode(mode);
+		}
+		return Core.getRectMode();
+	}
+	
+	public function print(data:Dynamic) {
+		trace(data);
 	}
 }
